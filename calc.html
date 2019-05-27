@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>けいさんどりる</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .button-push {
+        display: inline-block;
+        max-width: 220px;
+        text-align: left;
+        background-color: #ffa400;
+        font-size: 1.4em;
+        color: #FFF;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 23px;
+        margin: 10px 60px;
+        border-radius: 3px;
+        border-bottom: 3px solid #d38500;
+      }
+      .list-style-type-none {
+        list-style-type: none;
+      }
+      .question {
+        display: flex;
+        align-items: center;
+        font-size: 1.8em;
+        margin: 30px;
+      }
+      .answer-input {
+        border: 0;
+        padding: 2px;
+        font-size: 1.1em;
+        border: solid 1px #ccc;
+        margin: 0px;
+        width: 80px; 
+      }
+      .text-red {
+        color: red;
+      }
+      .result {
+        display: flex;
+        align-items: center;
+        font-size: 2.4em;
+        margin: 10px 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>けいさんどりる</h1>
+      <ul>
+        <li v-for="(item, index) in lists" v-bind:class="['list-' + index]" class="list-style-type-none">
+          <div class="question">
+            <div id="num">
+              {{ index + 1 }})&nbsp;&nbsp;
+            </div>
+            <div id="one">
+              {{ item.numberOne }}
+            </div>
+              &nbsp;
+            <div id="operator">
+              +
+            </div>
+            &nbsp;
+            <div id="two">
+              {{ item.numberTwo }}
+            </div>
+            &nbsp;
+            <div id="equal">
+              = 
+            </div>
+            &nbsp;
+            <div id="answer">
+              <input type="number" size="2" v-bind:id="['a' + index]" class="answer-input">
+            </div>
+            <div id="seikai" class="text-red">
+              &nbsp;&nbsp;{{ item.maruBatsu }}
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <button v-on:click="rightOrWrong" class="button-push" v-bind:disabled="wasPushed">こたえあわせ</button>
+
+      <div v-bind:style="{ display: resultDisplay }">
+        <hr>
+        <div id="result2" class="result">
+          <div>とくてん: {{ score }} てん!</div>
+          <div>&nbsp;</div>
+          <div><img :src="['/img/' + goodOrBad + '.jpg']" height="120px" width="120px" /></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>
