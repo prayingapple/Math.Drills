@@ -14,6 +14,7 @@ var app = new Vue({
     for (i = 0; i < this.maxNum; i++) {
       this.lists.splice(i, 0, 
         {
+          id: i,
           numberOne: Math.floor(Math.random() * 10), 
           numberTwo: Math.floor(Math.random() * 10),
           maruBatsu: ''

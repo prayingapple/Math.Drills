@@ -51,10 +51,10 @@
     <div id="app">
       <h1>けいさんどりる</h1>
       <ul>
-        <li v-for="(item, index) in lists" v-bind:class="['list-' + index]" class="list-style-type-none">
+        <li v-for="item in lists" :key="item.id" v-bind:class="['list-' + item.id]" class="list-style-type-none">
           <div class="question">
             <div id="num">
-              {{ index + 1 }})&nbsp;&nbsp;
+              {{ item.id + 1 }})&nbsp;&nbsp;
             </div>
             <div id="one">
               {{ item.numberOne }}
@@ -73,7 +73,7 @@
             </div>
             &nbsp;
             <div id="answer">
-              <input type="number" size="2" v-bind:id="['a' + index]" class="answer-input">
+              <input type="number" size="2" v-bind:id="['a' + item.id]" class="answer-input">
             </div>
             <div id="seikai" class="text-red">
               &nbsp;&nbsp;{{ item.maruBatsu }}
